@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amar Skin - Clinic Catalyst Demo Package</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fahkwang:wght@200;300;400&family=Mulish:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --charcoal: #1A1A2E;
+      --teal: #0D5C63;
+      --gold: #C5963A;
+      --gold-light: #D4A853;
+      --cream: #FBF8F5;
+      --white: #ffffff;
+    }
+
+    body {
+      font-family: 'Mulish', sans-serif;
+      background: var(--charcoal);
+      color: var(--white);
+      min-height: 100vh;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* BG */
+    .bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+    }
+    .bg-img {
+      position: absolute;
+      inset: 0;
+      background-image: url('../assets/post9_microderm.jpg');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.06;
+    }
+    .bg-grad {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at top right, rgba(13,92,99,0.2) 0%, transparent 50%),
+                  radial-gradient(ellipse at bottom left, rgba(197,150,58,0.08) 0%, transparent 50%);
+    }
+
+    /* CONTENT */
+    .wrap {
+      position: relative;
+      z-index: 10;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 40px 80px;
+      width: 100%;
+    }
+
+    /* CC BRAND */
+    .cc-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 80px;
+    }
+    .cc-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .cc-mark {
+      width: 40px;
+      height: 40px;
+      background: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Fahkwang', serif;
+      font-weight: 400;
+      font-size: 0.95rem;
+      color: var(--charcoal);
+    }
+    .cc-name {
+      font-family: 'Fahkwang', serif;
+      font-weight: 200;
+      font-size: 1.1rem;
+      color: var(--white);
+      letter-spacing: 0.1em;
+    }
+    .cc-name span {
+      display: block;
+      font-family: 'Mulish', sans-serif;
+      font-size: 0.58rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-top: 2px;
+    }
+    .cc-date {
+      font-family: 'Mulish', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.08em;
+      text-align: right;
+    }
+
+    /* INTRO */
+    .intro {
+      margin-bottom: 60px;
+    }
+    .intro-tag {
+      font-family: 'Mulish', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .intro-tag::before {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: var(--gold);
+    }
+    .intro-headline {
+      font-family: 'Fahkwang', serif;
+      font-weight: 200;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      color: var(--white);
+      line-height: 1.2;
+      letter-spacing: 0.02em;
+      margin-bottom: 16px;
+    }
+    .intro-headline em {
+      font-style: italic;
+      color: var(--gold);
+    }
+    .intro-sub {
+      font-family: 'Mulish', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.75;
+      max-width: 580px;
+    }
+
+    /* CLINIC BADGE */
+    .clinic-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 16px 24px;
+      margin-bottom: 60px;
+    }
+    .clinic-img {
+      width: 52px;
+      height: 52px;
+      background-image: url('../assets/post1_xmas.jpg');
+      background-size: cover;
+      background-position: center;
+      flex-shrink: 0;
+    }
+    .clinic-info {}
+    .clinic-name {
+      font-family: 'Fahkwang', serif;
+      font-weight: 300;
+      font-size: 1.05rem;
+      color: var(--white);
+      letter-spacing: 0.08em;
+    }
+    .clinic-meta {
+      font-family: 'Mulish', sans-serif;
+      font-size: 0.73rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.4);
+      margin-top: 4px;
+      letter-spacing: 0.05em;
+    }
+    .clinic-meta span {
+      color: var(--gold);
+      margin-left: 10px;
+    }
+
+    /* DIVIDER LABEL */
+    .section-divider {
+      font-family: 'Mulish', sans-serif;
+      font-size: 0.63rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.25);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-divider::before, .section-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(255,255,255,0.06);
+    }
+
+    /* DEMO LINKS */
+    .demo-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      margin-bottom: 60px;
+    }
+
+    .demo-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 28px 32px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      transition: all 0.25s ease;
+    }
+    .demo-card:hover {
+      background: rgba(197,150,58,0.06);
+      border-color: rgba(197,150,58,0.25);
+      transform: translateX(4px);
+    }
+    .demo-card-num {
+      font-family: 'Fahkwang', serif;
+      font-weight: 200;
+      font-size: 1.8rem;
+      color: rgba(197,150,58,0.3);
+      letter-spacing: 0.05em;
+      width: 40px;
+      flex-shrink: 0;
+      text-align: center;
+    }
+    .demo-card:hover .demo-card-num { color: var(--gold); }
+    .demo-card-content { flex: 1; }
+    .demo-card-title {
+      font-family: 'Fahkwang', serif;
+      font-weight: 300;
+      font-size: 1.1rem;
+      color: var(--white);
+      letter-spacing: 0.05em;
+      margin-bottom: 5px;
+    }
+    .demo-card:hover .demo-card-title { color: var(--gold-light); }
+    .demo-card-desc {
+      font-family: 'Mulish', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.5;
+    }
+    .demo-card-tags {
+      display: flex;
+      gap: 6px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+    .demo-tag {
+      font-family: 'Mulish', sans-serif;
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(197,150,58,0.7);
+      background: rgba(197,150,58,0.08);
+      padding: 3px 8px;
+    }
+    .demo-card-arrow {
+      color: rgba(255,255,255,0.2);
+      font-size: 1.1rem;
+      transition: color 0.2s, transform 0.2s;
+      flex-shrink: 0;
+    }
+    .demo-card:hover .demo-card-arrow {
+      color: var(--gold);
+      transform: translateX(4px);
+    }
+
+    /* CLINIC INTEL */
+    .intel-box {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 32px;
+      margin-bottom: 60px;
+    }
+    .intel-box h3 {
+      font-family: 'Mulish', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+    .intel-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .intel-item {}
+    .intel-label {
+      font-family: 'Mulish', sans-serif;
+      font-size: 0.64rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 4px;
+    }
+    .intel-value {
+      font-family: 'Mulish', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.5;
+    }
+    .intel-value a {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .intel-value a:hover { color: var(--gold); }
+
+    /* NOTE */
+    .cc-note {
+      background: rgba(13,92,99,0.15);
+      border: 1px solid rgba(13,92,99,0.3);
+      border-left: 3px solid var(--teal);
+      padding: 20px 24px;
+    }
+    .cc-note p {
+      font-family: 'Mulish', sans-serif;
+      font-size: 0.83rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+    }
+    .cc-note p strong { color: rgba(255,255,255,0.8); font-weight: 600; }
+
+    /* FOOTER */
+    .hub-footer {
+      position: relative;
+      z-index: 10;
+      padding: 24px 40px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .hub-footer p {
+      font-family: 'Mulish', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.2);
+    }
+
+    @media (max-width: 640px) {
+      .wrap { padding: 40px 20px 60px; }
+      .cc-header { flex-direction: column; gap: 20px; align-items: flex-start; }
+      .intel-grid { grid-template-columns: 1fr; }
+      .demo-card { padding: 22px 20px; gap: 16px; }
+      .hub-footer { flex-direction: column; gap: 8px; text-align: center; padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg">
+    <div class="bg-img"></div>
+    <div class="bg-grad"></div>
+  </div>
+
+  <div class="wrap">
+
+    <!-- HEADER -->
+    <div class="cc-header">
+      <div class="cc-brand">
+        <div class="cc-mark">CC</div>
+        <div class="cc-name">
+          Clinic Catalyst
+          <span>by AI with Soul</span>
+        </div>
+      </div>
+      <div class="cc-date">
+        Demo Package<br>May 2026
+      </div>
+    </div>
+
+    <!-- INTRO -->
+    <div class="intro">
+      <p class="intro-tag">Prospect Demo</p>
+      <h1 class="intro-headline">
+        This is what<br>
+        <em>Amar Skin</em> could look like online
+      </h1>
+      <p class="intro-sub">
+        Built in one session from real Instagram imagery and Google reviews.
+        This is the digital presence your clinic deserves - and the starting point
+        for a conversation about what we build together.
+      </p>
+    </div>
+
+    <!-- CLINIC BADGE -->
+    <div class="clinic-badge">
+      <div class="clinic-img"></div>
+      <div class="clinic-info">
+        <div class="clinic-name">Amar Skin</div>
+        <div class="clinic-meta">
+          Suite 1/1051 High St, Armadale VIC 3143
+          <span>5.0 &#9733; 89 Google Reviews</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- DEMO LINKS -->
+    <p class="section-divider">Three Pages - Explore Below</p>
+
+    <div class="demo-cards">
+
+      <a href="homepage.html" class="demo-card">
+        <div class="demo-card-num">01</div>
+        <div class="demo-card-content">
+          <div class="demo-card-title">Homepage</div>
+          <div class="demo-card-desc">The showpiece. Full-viewport hero carousel using real Instagram images, three client offer pathways, owner trust section, real review quotes, and a cinematic design that reflects the boutique experience clients describe.</div>
+          <div class="demo-card-tags">
+            <span class="demo-tag">Cinematic</span>
+            <span class="demo-tag">Real images</span>
+            <span class="demo-tag">Lead capture</span>
+            <span class="demo-tag">Mobile ready</span>
+          </div>
+        </div>
+        <div class="demo-card-arrow">&#8594;</div>
+      </a>
+
+      <a href="assessment.html" class="demo-card">
+        <div class="demo-card-num">02</div>
+        <div class="demo-card-content">
+          <div class="demo-card-title">Skin Assessment Quiz</div>
+          <div class="demo-card-desc">5-step quiz that identifies each visitor's skin concern, collects their details, and delivers a personalised treatment recommendation. Works 24 hours a day - even when the clinic is closed on Fridays and Sundays.</div>
+          <div class="demo-card-tags">
+            <span class="demo-tag">Lead capture</span>
+            <span class="demo-tag">Personalised results</span>
+            <span class="demo-tag">Works 24/7</span>
+          </div>
+        </div>
+        <div class="demo-card-arrow">&#8594;</div>
+      </a>
+
+      <a href="roadmap.html" class="demo-card">
+        <div class="demo-card-num">03</div>
+        <div class="demo-card-content">
+          <div class="demo-card-title">Your Digital Roadmap</div>
+          <div class="demo-card-desc">The key conversation piece. Presents the opportunity clearly: 14 years of results, 89 five-star reviews, zero web presence. Then shows exactly what we build, how fast, and why Clinic Catalyst is different from a generic web agency.</div>
+          <div class="demo-card-tags">
+            <span class="demo-tag">Opportunity framing</span>
+            <span class="demo-tag">Build plan</span>
+            <span class="demo-tag">Timeline</span>
+          </div>
+        </div>
+        <div class="demo-card-arrow">&#8594;</div>
+      </a>
+
+    </div>
+
+    <!-- CLINIC INTEL -->
+    <p class="section-divider">Clinic Intelligence</p>
+
+    <div class="intel-box">
+      <h3>What We Found</h3>
+      <div class="intel-grid">
+        <div class="intel-item">
+          <div class="intel-label">Owner</div>
+          <div class="intel-value">Amar (first name confirmed from reviews)<br>+ Abbey (practitioner)</div>
+        </div>
+        <div class="intel-item">
+          <div class="intel-label">Location</div>
+          <div class="intel-value">Suite 1, Level 1<br>1051 High Street, Armadale VIC 3143</div>
+        </div>
+        <div class="intel-item">
+          <div class="intel-label">Phone</div>
+          <div class="intel-value">
+            <a href="tel:0398222488">(03) 9822 2488</a><br>
+            <a href="tel:0422225719">0422 225 719 (mobile)</a>
+          </div>
+        </div>
+        <div class="intel-item">
+          <div class="intel-label">Reputation</div>
+          <div class="intel-value">5.0 stars - 89 Google reviews<br>10-year loyal clients confirmed</div>
+        </div>
+        <div class="intel-item">
+          <div class="intel-label">Treatments identified</div>
+          <div class="intel-value">Acne treatment, microdermabrasion, phototherapy/LED, full body skincare, customised facials</div>
+        </div>
+        <div class="intel-item">
+          <div class="intel-label">Product ranges</div>
+          <div class="intel-value">Jan Marini Science of Skin (medical-grade), Youngblood mineral cosmetics</div>
+        </div>
+        <div class="intel-item">
+          <div class="intel-label">Social</div>
+          <div class="intel-value">
+            <a href="https://www.instagram.com/amarskinclinicmelbourne/" target="_blank">@amarskinclinicmelbourne</a> (223 followers, 22 posts)<br>
+            <a href="https://www.facebook.com/AmarSkinClinic/" target="_blank">Facebook</a> (51 likes)
+          </div>
+        </div>
+        <div class="intel-item">
+          <div class="intel-label">Images collected</div>
+          <div class="intel-value">9 real Instagram images (1080x1080)<br>including acne B&amp;A transformation post</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NOTE -->
+    <div class="cc-note">
+      <p>
+        <strong>What this demo does not have yet:</strong> a booking system integration, Google Analytics, owner photo (Amar's personal image was not publicly available), and full SEO meta structure. All of that is part of the live build. <strong>This demo was built in one session from publicly available Instagram and review data only.</strong> The live version would be built with Amar directly - meaning it would be sharper, more personal, and include content she has not yet posted publicly.
+      </p>
+    </div>
+
+  </div>
+
+  <div class="hub-footer">
+    <p>Clinic Catalyst - a Clinic Catalyst x AI with Soul product</p>
+    <p>Built for Amar Skin - Armadale, Melbourne - May 2026</p>
+  </div>
+
+</body>
+</html>

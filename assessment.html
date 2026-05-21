@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skin Assessment - Amar Skin | Find Your Skin Path</title>
+  <meta name="description" content="Take our 2-minute skin assessment to understand what your skin needs and discover the right treatment path at Amar Skin, Armadale.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fahkwang:wght@200;300;400&family=Mulish:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --charcoal: #1A1A2E;
+      --gold: #C5963A;
+      --gold-light: #D4A853;
+      --cream: #FBF8F5;
+      --cream-warm: #F5EFE8;
+      --white: #ffffff;
+      --text-dark: #1A1A2E;
+      --text-mid: #4A4A5A;
+    }
+
+    body {
+      font-family: 'Mulish', sans-serif;
+      background: var(--charcoal);
+      color: var(--white);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Background */
+    .bg-wrap {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+    }
+    .bg-img {
+      position: absolute;
+      inset: 0;
+      background-image: url('../assets/post8_acne_ba.jpg');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.08;
+    }
+    .bg-gradient {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at top right, rgba(197,150,58,0.08) 0%, transparent 60%);
+    }
+
+    /* NAV */
+    nav {
+      position: relative;
+      z-index: 10;
+      padding: 24px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-logo {
+      font-family: 'Fahkwang', serif;
+      font-weight: 200;
+      font-size: 1.3rem;
+      color: var(--white);
+      letter-spacing: 0.15em;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-back {
+      font-family: 'Mulish', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--gold); }
+
+    /* MAIN CONTAINER */
+    .quiz-wrap {
+      position: relative;
+      z-index: 10;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 60px 24px 100px;
+    }
+
+    /* PROGRESS */
+    .progress-bar-wrap {
+      margin-bottom: 52px;
+    }
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .progress-label span {
+      font-family: 'Mulish', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+    }
+    .progress-label strong {
+      font-family: 'Fahkwang', serif;
+      font-weight: 200;
+      font-size: 0.9rem;
+      color: var(--gold);
+    }
+    .progress-bar {
+      height: 2px;
+      background: rgba(255,255,255,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      transition: width 0.5s ease;
+    }
+
+    /* STEP */
+    .step {
+      display: none;
+      animation: fadeIn 0.4s ease;
+    }
+    .step.active { display: block; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .step-eyebrow {
+      font-family: 'Mulish', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .step-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 1px;
+      background: var(--gold);
+      vertical-align: middle;
+      margin-right: 10px;
+    }
+
+    .step-question {
+      font-family: 'Fahkwang', serif;
+      font-weight: 200;
+      font-size: clamp(1.5rem, 4vw, 2.4rem);
+      color: var(--white);
+      line-height: 1.25;
+      letter-spacing: 0.02em;
+      margin-bottom: 12px;
+    }
+    .step-question em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .step-sub {
+      font-family: 'Mulish', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 40px;
+      line-height: 1.65;
+    }
+
+    /* OPTIONS */
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .option {
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.03);
+      padding: 20px 24px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      text-align: left;
+    }
+    .option:hover {
+      border-color: rgba(197,150,58,0.4);
+      background: rgba(197,150,58,0.05);
+    }
+    .option.selected {
+      border-color: var(--gold);
+      background: rgba(197,150,58,0.08);
+    }
+    .option-radio {
+      width: 20px;
+      height: 20px;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+      transition: all 0.2s;
+    }
+    .option.selected .option-radio {
+      border-color: var(--gold);
+      background: var(--gold);
+    }
+    .option.selected .option-radio::after {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: var(--charcoal);
+      border-radius: 50%;
+    }
+    .option-content {}
+    .option-label {
+      font-family: 'Mulish', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+    .option.selected .option-label { color: var(--gold); }
+    .option-desc {
+      font-family: 'Mulish', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.5;
+    }
+
+    /* NAV BUTTONS */
+    .step-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 44px;
+      gap: 16px;
+    }
+    .btn-back {
+      font-family: 'Mulish', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: color 0.2s;
+      padding: 8px 0;
+    }
+    .btn-back:hover { color: var(--white); }
+    .btn-next {
+      font-family: 'Mulish', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      background: var(--gold);
+      border: none;
+      padding: 14px 36px;
+      cursor: pointer;
+      transition: all 0.25s;
+      margin-left: auto;
+    }
+    .btn-next:hover {
+      background: var(--gold-light);
+      transform: translateY(-1px);
+    }
+    .btn-next:disabled {
+      background: rgba(197,150,58,0.3);
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* LEAD CAPTURE STEP */
+    .lead-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 40px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .form-label {
+      font-family: 'Mulish', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+    }
+    .form-input {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--white);
+      font-family: 'Mulish', sans-serif;
+      font-size: 0.98rem;
+      font-weight: 300;
+      padding: 14px 18px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-input::placeholder { color: rgba(255,255,255,0.25); }
+    .form-input:focus { border-color: var(--gold); }
+    .form-privacy {
+      font-family: 'Mulish', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.28);
+      line-height: 1.6;
+    }
+
+    /* RESULTS */
+    .result-wrap {
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+    .result-wrap.active { display: block; }
+
+    .result-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(197,150,58,0.1);
+      border: 1px solid rgba(197,150,58,0.3);
+      padding: 8px 18px;
+      margin-bottom: 28px;
+    }
+    .result-badge span {
+      font-family: 'Mulish', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .result-title {
+      font-family: 'Fahkwang', serif;
+      font-weight: 200;
+      font-size: clamp(1.6rem, 4vw, 2.6rem);
+      color: var(--white);
+      line-height: 1.2;
+      letter-spacing: 0.02em;
+      margin-bottom: 12px;
+    }
+    .result-title em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .result-subtitle {
+      font-family: 'Mulish', sans-serif;
+      font-size: 1rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+
+    .result-divider {
+      width: 48px;
+      height: 2px;
+      background: var(--gold);
+      margin-bottom: 36px;
+    }
+
+    .result-about {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-left: 3px solid var(--gold);
+      padding: 28px 28px;
+      margin-bottom: 36px;
+    }
+    .result-about h4 {
+      font-family: 'Mulish', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .result-about p {
+      font-family: 'Mulish', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.75;
+    }
+
+    .result-cta-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .result-cta-primary {
+      font-family: 'Mulish', sans-serif;
+      font-weight: 600;
+      font-size: 0.82rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      background: var(--gold);
+      padding: 16px 36px;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.25s;
+    }
+    .result-cta-primary:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+    }
+    .result-cta-note {
+      font-family: 'Mulish', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.35);
+    }
+
+    /* MOBILE */
+    @media (max-width: 640px) {
+      nav { padding: 18px 20px; }
+      .quiz-wrap { padding: 40px 20px 80px; }
+      .step-nav { flex-direction: column; }
+      .btn-next { width: 100%; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-wrap">
+    <div class="bg-img"></div>
+    <div class="bg-gradient"></div>
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="homepage.html" class="nav-logo">Amar <span>Skin</span></a>
+    <a href="homepage.html" class="nav-back">&#8592; Back to website</a>
+  </nav>
+
+  <div class="quiz-wrap">
+
+    <!-- PROGRESS -->
+    <div class="progress-bar-wrap">
+      <div class="progress-label">
+        <span>Skin Assessment</span>
+        <strong id="progressLabel">Step 1 of 5</strong>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill" style="width: 20%"></div>
+      </div>
+    </div>
+
+    <!-- STEP 1 - Primary concern -->
+    <div class="step active" id="step1">
+      <p class="step-eyebrow">Where it starts</p>
+      <h2 class="step-question">What is your skin's <em>main challenge</em> right now?</h2>
+      <p class="step-sub">Choose the one that resonates most. There are no wrong answers here.</p>
+      <div class="options">
+        <div class="option" data-value="acne" onclick="selectOption(this, 1)">
+          <div class="option-radio"></div>
+          <div class="option-content">
+            <div class="option-label">Breakouts and acne that won't go away</div>
+            <div class="option-desc">Persistent spots, cystic acne, post-acne marks, hormonal flare-ups</div>
+          </div>
+        </div>
+        <div class="option" data-value="texture" onclick="selectOption(this, 1)">
+          <div class="option-radio"></div>
+          <div class="option-content">
+            <div class="option-label">Dull, uneven or rough-feeling skin</div>
+            <div class="option-desc">Lack of radiance, uneven tone, enlarged pores, rough texture</div>
+          </div>
+        </div>
+        <div class="option" data-value="ageing" onclick="selectOption(this, 1)">
+          <div class="option-radio"></div>
+          <div class="option-content">
+            <div class="option-label">Fine lines, loss of firmness or radiance</div>
+            <div class="option-desc">Skin that looks tired, early signs of ageing, loss of bounce</div>
+          </div>
+        </div>
+        <div class="option" data-value="sensitivity" onclick="selectOption(this, 1)">
+          <div class="option-radio"></div>
+          <div class="option-content">
+            <div class="option-label">Sensitive, reactive or redness-prone skin</div>
+            <div class="option-desc">Redness, flushing, rosacea-like symptoms, easily irritated</div>
+          </div>
+        </div>
+      </div>
+      <div class="step-nav">
+        <button class="btn-next" id="next1" onclick="nextStep(1)" disabled>Continue</button>
+      </div>
+    </div>
+
+    <!-- STEP 2 - How long -->
+    <div class="step" id="step2">
+      <p class="step-eyebrow">The timeline</p>
+      <h2 class="step-question">How long has your skin been <em>feeling this way?</em></h2>
+      <p class="step-sub">This helps us understand whether we are working with something new or something that needs a longer-term plan.</p>
+      <div class="options">
+        <div class="option" data-value="new" onclick="selectOption(this, 2)">
+          <div class="option-radio"></div>
+          <div class="option-content">
+            <div class="option-label">It has come on recently - the last few months</div>
+          </div>
+        </div>
+        <div class="option" data-value="year" onclick="selectOption(this, 2)">
+          <div class="option-radio"></div>
+          <div class="option-content">
+            <div class="option-label">About a year or so - it comes and goes</div>
+          </div>
+        </div>
+        <div class="option" data-value="years" onclick="selectOption(this, 2)">
+          <div class="option-radio"></div>
+          <div class="option-content">
+            <div class="option-label">Several years - it is my normal</div>
+          </div>
+        </div>
+        <div class="option" data-value="always" onclick="selectOption(this, 2)">
+          <div class="option-radio"></div>
+          <div class="option-content">
+            <div class="option-label">As long as I can remember - I have always struggled with this</div>
+          </div>
+        </div>
+      </div>
+      <div class="step-nav">
+        <button class="btn-back" onclick="prevStep(2)">&#8592; Back</button>
+        <button class="btn-next" id="next2" onclick="nextStep(2)" disabled>Continue</button>
+      </div>
+    </div>
+
+    <!-- STEP 3 - What you've tried -->
+    <div class="step" id="step3">
+      <p class="step-eyebrow">What you have tried</p>
+      <h2 class="step-question">What has your approach to skin care <em>looked like so far?</em></h2>
+      <p class="step-sub">Be honest - this helps us understand where things stand.</p>
+      <div class="options">
+        <div class="option" data-value="nothing" onclick="selectOption(this, 3)">
+          <div class="option-radio"></div>
+          <div class="option-content">
+            <div class="option-label">I have not really done anything yet</div>
+            <div class="option-desc">Just regular cleansing, not much else</div>
+          </div>
+        </div>
+        <div class="option" data-value="products" onclick="selectOption(this, 3)">
+          <div class="option-radio"></div>
+          <div class="option-content">
+            <div class="option-label">I use skincare products at home</div>
+            <div class="option-desc">Cleanser, moisturiser, maybe some serums - but not seeing results</div>
+          </div>
+        </div>
+        <div class="option" data-value="treatments" onclick="selectOption(this, 3)">
+          <div class="option-radio"></div>
+          <div class="option-content">
+            <div class="option-label">I have had a few treatments before</div>
+            <div class="option-desc">Facials, peels, or other clinic visits - with mixed results</div>
+          </div>
+        </div>
+        <div class="option" data-value="lots" onclick="selectOption(this, 3)">
+          <div class="option-radio"></div>
+          <div class="option-content">
+            <div class="option-label">I have tried a lot - nothing has really stuck</div>
+            <div class="option-desc">Products, treatments, dermatologist visits - still searching</div>
+          </div>
+        </div>
+      </div>
+      <div class="step-nav">
+        <button class="btn-back" onclick="prevStep(3)">&#8592; Back</button>
+        <button class="btn-next" id="next3" onclick="nextStep(3)" disabled>Continue</button>
+      </div>
+    </div>
+
+    <!-- STEP 4 - Goal -->
+    <div class="step" id="step4">
+      <p class="step-eyebrow">What matters most</p>
+      <h2 class="step-question">What would <em>genuinely change things</em> for you?</h2>
+      <p class="step-sub">Not about vanity. About how you want to feel in your own skin.</p>
+      <div class="options">
+        <div class="option" data-value="confidence" onclick="selectOption(this, 4)">
+          <div class="option-radio"></div>
+          <div class="option-content">
+            <div class="option-label">To stop thinking about my skin every day</div>
+            <div class="option-desc">Just want to feel confident and not self-conscious</div>
+          </div>
+        </div>
+        <div class="option" data-value="results" onclick="selectOption(this, 4)">
+          <div class="option-radio"></div>
+          <div class="option-content">
+            <div class="option-label">To finally see real, visible change</div>
+            <div class="option-desc">I want results I can actually see in the mirror</div>
+          </div>
+        </div>
+        <div class="option" data-value="longterm" onclick="selectOption(this, 4)">
+          <div class="option-radio"></div>
+          <div class="option-content">
+            <div class="option-label">To invest in my skin for the long term</div>
+            <div class="option-desc">I want a plan that keeps my skin healthy, not just fixes the immediate problem</div>
+          </div>
+        </div>
+        <div class="option" data-value="understand" onclick="selectOption(this, 4)">
+          <div class="option-radio"></div>
+          <div class="option-content">
+            <div class="option-label">To finally understand what my skin actually needs</div>
+            <div class="option-desc">I want expert guidance, not just another product recommendation</div>
+          </div>
+        </div>
+      </div>
+      <div class="step-nav">
+        <button class="btn-back" onclick="prevStep(4)">&#8592; Back</button>
+        <button class="btn-next" id="next4" onclick="nextStep(4)" disabled>Continue</button>
+      </div>
+    </div>
+
+    <!-- STEP 5 - Lead Capture -->
+    <div class="step" id="step5">
+      <p class="step-eyebrow">Almost there</p>
+      <h2 class="step-question">Where should we send your <em>personalised skin path?</em></h2>
+      <p class="step-sub">Your results are ready. Enter your details below and we will follow up with a tailored recommendation from Amar.</p>
+      <form class="lead-form" id="leadForm" onsubmit="submitForm(event)">
+        <div class="form-group">
+          <label class="form-label" for="name">Your First Name</label>
+          <input class="form-input" type="text" id="name" name="name" placeholder="e.g. Sarah" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="phone">Mobile Number</label>
+          <input class="form-input" type="tel" id="phone" name="phone" placeholder="e.g. 0412 345 678" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="email">Email Address</label>
+          <input class="form-input" type="email" id="email" name="email" placeholder="e.g. you@email.com">
+        </div>
+        <p class="form-privacy">Your details go directly to Amar Skin. We do not share or sell your information. You may receive a follow-up call or message from the clinic.</p>
+        <div class="step-nav">
+          <button type="button" class="btn-back" onclick="prevStep(5)">&#8592; Back</button>
+          <button type="submit" class="btn-next">See My Results</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- RESULTS -->
+    <div class="result-wrap" id="resultsWrap">
+      <div class="result-badge">
+        <span>&#10003;&nbsp; Your Skin Path</span>
+      </div>
+      <h2 class="result-title" id="resultTitle">Your skin is ready for<br>a <em>new chapter</em></h2>
+      <p class="result-subtitle" id="resultSubtitle">Based on your answers, here is what your skin is telling us.</p>
+      <div class="result-divider"></div>
+      <div class="result-about">
+        <h4 id="resultProgramLabel">Your Recommended Path</h4>
+        <p id="resultProgramDesc">Loading your personalised recommendation...</p>
+      </div>
+      <div class="result-cta-wrap">
+        <a href="tel:0398222488" class="result-cta-primary">Book Your Consultation - (03) 9822 2488</a>
+        <p class="result-cta-note">Suite 1, Level 1, 1051 High Street, Armadale - Mon to Sat</p>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const answers = {};
+    const totalSteps = 5;
+
+    // Result content based on primary concern
+    const results = {
+      acne: {
+        title: 'Your skin needs a <em>clear strategy</em>',
+        subtitle: 'Persistent breakouts are not a hygiene issue or a willpower issue. They are a skin biology issue - and that is exactly what we are trained to address.',
+        label: 'The Clear Skin Programme',
+        desc: 'Based on your answers, a customised acne treatment plan is the right starting point. This typically combines targeted clinical treatments with medical-grade home care to address the root cause - not just suppress the symptoms. Clients on this path often see meaningful change within 6 - 12 weeks.'
+      },
+      texture: {
+        title: 'Your skin is ready to <em>resurface</em>',
+        subtitle: 'Dull, uneven skin is often the result of accumulated dead cells, environmental stress, and sluggish skin turnover. The right resurfacing treatment can change things quickly.',
+        label: 'The Clarity + Radiance Path',
+        desc: 'Your answers suggest a resurfacing and brightening programme would serve you well. This typically includes treatments like microdermabrasion, targeted peels, and phototherapy - layered in the right order to reveal the clarity your skin already has beneath the surface.'
+      },
+      ageing: {
+        title: 'Your skin deserves a <em>restoration plan</em>',
+        subtitle: 'Ageing skin is not a problem to hide. It is a system that needs the right support - collagen stimulation, hydration, and targeted treatments that work with your skin, not against it.',
+        label: 'The Luminosity + Longevity Plan',
+        desc: 'Based on your answers, a personalised anti-ageing programme is the right path. This typically combines LED phototherapy, customised facials, and a medical-grade home care routine designed to restore radiance, support firmness, and maintain results long-term.'
+      },
+      sensitivity: {
+        title: 'Your skin needs someone who <em>listens first</em>',
+        subtitle: 'Sensitive skin is often misunderstood - and the wrong treatment can make things worse. Amar\'s approach starts with understanding exactly what your skin is reacting to before recommending anything.',
+        label: 'The Calm + Resilience Path',
+        desc: 'Your answers point toward a gentle, diagnostic approach. We start with a thorough skin consultation, identify your specific triggers, and design a treatment plan that works within your skin\'s tolerance - not against it. Many clients with long-term sensitivity find significant relief within their first few visits.'
+      }
+    };
+
+    function selectOption(el, step) {
+      const group = el.parentElement;
+      group.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+      el.classList.add('selected');
+      answers['step' + step] = el.dataset.value;
+      document.getElementById('next' + step).disabled = false;
+    }
+
+    function nextStep(current) {
+      document.getElementById('step' + current).classList.remove('active');
+      if (current < totalSteps) {
+        document.getElementById('step' + (current + 1)).classList.add('active');
+        updateProgress(current + 1);
+      }
+    }
+
+    function prevStep(current) {
+      document.getElementById('step' + current).classList.remove('active');
+      document.getElementById('step' + (current - 1)).classList.add('active');
+      updateProgress(current - 1);
+    }
+
+    function updateProgress(step) {
+      const pct = (step / totalSteps) * 100;
+      document.getElementById('progressFill').style.width = pct + '%';
+      document.getElementById('progressLabel').textContent = 'Step ' + step + ' of ' + totalSteps;
+    }
+
+    function submitForm(e) {
+      e.preventDefault();
+      document.getElementById('step5').classList.remove('active');
+
+      const concern = answers['step1'] || 'acne';
+      const result = results[concern] || results.acne;
+
+      document.getElementById('resultTitle').innerHTML = result.title;
+      document.getElementById('resultSubtitle').textContent = result.subtitle;
+      document.getElementById('resultProgramLabel').textContent = result.label;
+      document.getElementById('resultProgramDesc').textContent = result.desc;
+
+      document.getElementById('resultsWrap').classList.add('active');
+      document.getElementById('progressFill').style.width = '100%';
+      document.getElementById('progressLabel').textContent = 'Complete';
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+
+</body>
+</html>

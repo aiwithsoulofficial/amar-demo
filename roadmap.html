@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Digital Roadmap - Amar Skin x Clinic Catalyst</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fahkwang:wght@200;300;400&family=Mulish:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal: #0D5C63;
+      --teal-mid: #0A4A50;
+      --teal-dark: #062E33;
+      --gold: #C5963A;
+      --gold-light: #D4A853;
+      --cream: #FBF8F5;
+      --white: #ffffff;
+      --text-dark: #1A1A1A;
+      --text-mid: #4A4A5A;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Mulish', sans-serif;
+      background: var(--cream);
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    /* ---- HEADER ---- */
+    header {
+      background: linear-gradient(135deg, var(--teal-dark) 0%, var(--teal) 60%, var(--teal-mid) 100%);
+      padding: 28px 56px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at top right, rgba(197,150,58,0.15) 0%, transparent 60%);
+    }
+
+    .header-nav {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 72px;
+    }
+    .cc-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .cc-logo-mark {
+      width: 38px;
+      height: 38px;
+      background: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Fahkwang', serif;
+      font-weight: 400;
+      font-size: 1rem;
+      color: var(--teal-dark);
+      letter-spacing: 0.05em;
+    }
+    .cc-name {
+      font-family: 'Fahkwang', serif;
+      font-weight: 200;
+      font-size: 1.1rem;
+      color: var(--white);
+      letter-spacing: 0.12em;
+    }
+    .cc-name span {
+      display: block;
+      font-family: 'Mulish', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      margin-top: 2px;
+    }
+    .header-prepared {
+      font-family: 'Mulish', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.45);
+      letter-spacing: 0.08em;
+      text-align: right;
+    }
+    .header-prepared strong {
+      display: block;
+      color: rgba(255,255,255,0.7);
+      font-weight: 500;
+      margin-bottom: 3px;
+    }
+
+    /* Hero text */
+    .header-hero {
+      position: relative;
+      z-index: 2;
+      padding-bottom: 80px;
+      max-width: 900px;
+    }
+    .header-eyebrow {
+      font-family: 'Mulish', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .header-eyebrow::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(197,150,58,0.5), transparent);
+      max-width: 200px;
+    }
+    .header-clinic-name {
+      font-family: 'Mulish', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 14px;
+    }
+    .header-headline {
+      font-family: 'Fahkwang', serif;
+      font-weight: 200;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      color: var(--white);
+      line-height: 1.15;
+      letter-spacing: 0.02em;
+      margin-bottom: 24px;
+    }
+    .header-headline em {
+      font-style: italic;
+      color: var(--gold);
+    }
+    .header-sub {
+      font-family: 'Mulish', sans-serif;
+      font-weight: 300;
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.75;
+      max-width: 640px;
+    }
+
+    /* ---- MAIN ---- */
+    main { max-width: 1000px; margin: 0 auto; padding: 0 48px 100px; }
+
+    /* ---- OPPORTUNITY ---- */
+    .opportunity {
+      margin-top: 72px;
+    }
+    .section-label {
+      font-family: 'Mulish', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-label::before {
+      content: '';
+      width: 20px;
+      height: 2px;
+      background: var(--teal);
+    }
+    .section-heading {
+      font-family: 'Fahkwang', serif;
+      font-weight: 200;
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      color: var(--text-dark);
+      line-height: 1.25;
+      letter-spacing: 0.02em;
+      margin-bottom: 28px;
+    }
+    .section-heading em { font-style: italic; color: var(--gold); }
+
+    /* Reality box */
+    .reality-box {
+      background: var(--teal-dark);
+      padding: 40px 44px;
+      margin-bottom: 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    .reality-box::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: var(--gold);
+    }
+    .reality-box::after {
+      content: '?';
+      position: absolute;
+      right: 32px;
+      top: 24px;
+      font-family: 'Fahkwang', serif;
+      font-size: 6rem;
+      font-weight: 200;
+      color: rgba(255,255,255,0.04);
+      line-height: 1;
+    }
+    .reality-box h3 {
+      font-family: 'Fahkwang', serif;
+      font-weight: 200;
+      font-size: 1.4rem;
+      color: var(--white);
+      letter-spacing: 0.03em;
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+    .reality-box h3 em { font-style: italic; color: var(--gold); }
+    .reality-box p {
+      font-family: 'Mulish', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.8;
+    }
+
+    /* Stats row */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-bottom: 56px;
+    }
+    .stat-box {
+      background: white;
+      padding: 32px 28px;
+      border: 1px solid rgba(0,0,0,0.06);
+      text-align: center;
+    }
+    .stat-num {
+      font-family: 'Fahkwang', serif;
+      font-weight: 200;
+      font-size: 3rem;
+      color: var(--teal);
+      letter-spacing: 0.04em;
+      line-height: 1;
+    }
+    .stat-label {
+      font-family: 'Mulish', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 400;
+      color: var(--text-mid);
+      line-height: 1.5;
+      margin-top: 8px;
+    }
+
+    /* Insight points */
+    .insights {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-bottom: 64px;
+    }
+    .insight {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      padding: 24px 28px;
+      background: white;
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+    .insight-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--teal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      font-weight: 700;
+    }
+    .insight-text h4 {
+      font-family: 'Mulish', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--text-dark);
+      margin-bottom: 6px;
+    }
+    .insight-text p {
+      font-family: 'Mulish', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: var(--text-mid);
+      line-height: 1.65;
+    }
+
+    /* ---- WHAT WE BUILD ---- */
+    .what-we-build {
+      margin-top: 72px;
+    }
+    .build-intro {
+      background: linear-gradient(135deg, var(--teal-dark), var(--teal));
+      padding: 44px 48px;
+      margin-bottom: 36px;
+    }
+    .build-intro p {
+      font-family: 'Mulish', sans-serif;
+      font-size: 1rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.8;
+    }
+    .build-intro p strong {
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    .build-phases {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .phase {
+      background: white;
+      border: 1px solid rgba(0,0,0,0.06);
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      overflow: hidden;
+    }
+    .phase-num-wrap {
+      background: var(--teal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Fahkwang', serif;
+      font-weight: 200;
+      font-size: 2.2rem;
+      color: rgba(255,255,255,0.25);
+      letter-spacing: 0.05em;
+    }
+    .phase-content {
+      padding: 28px 32px;
+    }
+    .phase-tag {
+      font-family: 'Mulish', sans-serif;
+      font-size: 0.63rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .phase-title {
+      font-family: 'Fahkwang', serif;
+      font-weight: 300;
+      font-size: 1.15rem;
+      color: var(--text-dark);
+      letter-spacing: 0.03em;
+      margin-bottom: 10px;
+    }
+    .phase-desc {
+      font-family: 'Mulish', sans-serif;
+      font-size: 0.83rem;
+      font-weight: 300;
+      color: var(--text-mid);
+      line-height: 1.7;
+    }
+    .phase-items {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+    .phase-item {
+      font-family: 'Mulish', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--teal);
+      background: rgba(13,92,99,0.07);
+      padding: 4px 12px;
+      letter-spacing: 0.05em;
+    }
+
+    /* ---- DIFFERENTIATION ---- */
+    .diff-section {
+      margin-top: 72px;
+    }
+    .diff-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin-top: 32px;
+    }
+    .diff-box {
+      padding: 32px 28px;
+    }
+    .diff-box.bad {
+      background: rgba(180,60,60,0.04);
+      border: 1px solid rgba(180,60,60,0.12);
+    }
+    .diff-box.good {
+      background: rgba(13,92,99,0.05);
+      border: 1px solid rgba(13,92,99,0.15);
+    }
+    .diff-box-label {
+      font-family: 'Mulish', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    .diff-box.bad .diff-box-label { color: #B44040; }
+    .diff-box.good .diff-box-label { color: var(--teal); }
+    .diff-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .diff-list li {
+      font-family: 'Mulish', sans-serif;
+      font-size: 0.87rem;
+      font-weight: 300;
+      color: var(--text-mid);
+      line-height: 1.5;
+      display: flex;
+      gap: 10px;
+    }
+    .diff-list li::before {
+      content: '×';
+      font-weight: 700;
+      color: #B44040;
+      flex-shrink: 0;
+    }
+    .diff-box.good .diff-list li::before {
+      content: '✓';
+      color: var(--teal);
+    }
+
+    /* ---- TIMELINE ---- */
+    .timeline-section {
+      margin-top: 72px;
+    }
+    .timeline {
+      margin-top: 36px;
+      position: relative;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 39px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--teal), rgba(13,92,99,0.1));
+    }
+    .timeline-item {
+      display: flex;
+      gap: 28px;
+      margin-bottom: 36px;
+      position: relative;
+    }
+    .timeline-dot {
+      width: 80px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      position: relative;
+      z-index: 1;
+    }
+    .timeline-dot-circle {
+      width: 22px;
+      height: 22px;
+      background: var(--teal);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .timeline-dot-circle::after {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: var(--gold);
+      border-radius: 50%;
+    }
+    .timeline-week {
+      font-family: 'Mulish', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-top: 6px;
+    }
+    .timeline-content {
+      background: white;
+      border: 1px solid rgba(0,0,0,0.07);
+      padding: 22px 24px;
+      flex: 1;
+    }
+    .timeline-content h4 {
+      font-family: 'Mulish', sans-serif;
+      font-weight: 600;
+      font-size: 0.92rem;
+      color: var(--text-dark);
+      margin-bottom: 6px;
+    }
+    .timeline-content p {
+      font-family: 'Mulish', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 300;
+      color: var(--text-mid);
+      line-height: 1.65;
+    }
+
+    /* ---- CTA ---- */
+    .roadmap-cta {
+      margin-top: 72px;
+      background: linear-gradient(135deg, var(--teal-dark), var(--teal-mid));
+      padding: 64px 56px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .roadmap-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center bottom, rgba(197,150,58,0.1) 0%, transparent 70%);
+    }
+    .roadmap-cta-content { position: relative; z-index: 2; }
+    .roadmap-cta h2 {
+      font-family: 'Fahkwang', serif;
+      font-weight: 200;
+      font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+      color: var(--white);
+      line-height: 1.2;
+      letter-spacing: 0.02em;
+      margin-bottom: 16px;
+    }
+    .roadmap-cta h2 em { font-style: italic; color: var(--gold); }
+    .roadmap-cta p {
+      font-family: 'Mulish', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.6);
+      max-width: 520px;
+      margin: 0 auto 40px;
+      line-height: 1.75;
+    }
+    .btn-cta {
+      font-family: 'Mulish', sans-serif;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--teal-dark);
+      background: var(--gold);
+      padding: 18px 44px;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.25s;
+    }
+    .btn-cta:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+    }
+    .cta-note {
+      font-family: 'Mulish', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.35);
+      margin-top: 20px;
+    }
+
+    /* ---- FOOTER ---- */
+    footer {
+      background: var(--teal-dark);
+      padding: 32px 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    footer p {
+      font-family: 'Mulish', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.3);
+    }
+    footer span { color: var(--gold); }
+
+    /* DIVIDER */
+    hr {
+      border: none;
+      height: 1px;
+      background: rgba(0,0,0,0.06);
+      margin: 64px 0;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      header { padding: 24px 24px 0; }
+      main { padding: 0 20px 80px; }
+      .header-nav { margin-bottom: 48px; }
+      .header-hero { padding-bottom: 56px; }
+      .stats-row { grid-template-columns: 1fr; }
+      .diff-grid { grid-template-columns: 1fr; }
+      .phase { grid-template-columns: 60px 1fr; }
+      .roadmap-cta { padding: 48px 28px; }
+      footer { padding: 24px; flex-direction: column; gap: 12px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-nav">
+      <div class="cc-brand">
+        <div class="cc-logo-mark">CC</div>
+        <div class="cc-name">
+          Clinic Catalyst
+          <span>by AI with Soul</span>
+        </div>
+      </div>
+      <div class="header-prepared">
+        <strong>Prepared for Amar Skin</strong>
+        Armadale, Melbourne VIC - May 2026
+      </div>
+    </div>
+    <div class="header-hero">
+      <p class="header-eyebrow">Your Digital Opportunity</p>
+      <p class="header-clinic-name">Amar Skin - 1051 High Street, Armadale</p>
+      <h1 class="header-headline">
+        14 years of extraordinary results.<br>
+        Zero digital presence to <em>show for it</em>.
+      </h1>
+      <p class="header-sub">
+        You have a 5-star reputation, 89 Google reviews, and a decade of loyal clients.
+        But right now, every single person searching for skin treatments in Armadale - your suburb -
+        cannot find you. This roadmap shows what changes when they can.
+      </p>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- OPPORTUNITY -->
+    <div class="opportunity">
+      <p class="section-label">The Current Reality</p>
+      <h2 class="section-heading">Every search for skin treatments in Armadale<br>sends potential clients <em>to your competitors</em></h2>
+
+      <div class="reality-box">
+        <h3>You have no website. That means right now, <em>you are invisible online.</em></h3>
+        <p>
+          When someone in Armadale types "skin clinic near me" or "acne treatment Melbourne" into Google,
+          your name does not appear. Your 14 years of experience, your 5-star reviews, your boutique approach -
+          none of it shows up. That person books with someone else. Every single day.
+        </p>
+      </div>
+
+      <div class="stats-row">
+        <div class="stat-box">
+          <div class="stat-num">89</div>
+          <div class="stat-label">Five-star Google reviews that no search visitor ever sees</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">14</div>
+          <div class="stat-label">Years of clinical expertise with no web presence to reflect it</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">0</div>
+          <div class="stat-label">Pages indexed on Google today - meaning zero organic discovery</div>
+        </div>
+      </div>
+
+      <div class="insights">
+        <div class="insight">
+          <div class="insight-icon">&#9679;</div>
+          <div class="insight-text">
+            <h4>Every competitor with a website is capturing the clients who should be yours</h4>
+            <p>In Armadale and South Yarra, there are multiple skin clinics ranking for the exact treatments you offer. Without a website, there is no way to compete for those searches - even with a superior reputation and product range.</p>
+          </div>
+        </div>
+        <div class="insight">
+          <div class="insight-icon">&#9679;</div>
+          <div class="insight-text">
+            <h4>Your real before-and-after results are invisible to everyone who needs them</h4>
+            <p>You have a 5-month acne transformation on Instagram that would convert a new client in seconds. Right now, only 223 Instagram followers ever see it. A website puts that content in front of people who are actively searching for what you do.</p>
+          </div>
+        </div>
+        <div class="insight">
+          <div class="insight-icon">&#9679;</div>
+          <div class="insight-text">
+            <h4>Referrals are working - but they have a ceiling</h4>
+            <p>Your 10-year clients and word-of-mouth are clearly strong. But referrals plateau. A website with a skin assessment funnel means new clients find you on their own - without needing to know someone who knows you first.</p>
+          </div>
+        </div>
+        <div class="insight">
+          <div class="insight-icon">&#9679;</div>
+          <div class="insight-text">
+            <h4>No website means no way to capture leads when the phone is off</h4>
+            <p>You are closed Fridays and Sundays. Someone searches at 9pm on a Thursday with a skin concern. There is no place for them to go, no quiz to take, no form to fill in. That interest disappears overnight.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <!-- WHAT WE BUILD -->
+    <div class="what-we-build">
+      <p class="section-label">The Solution</p>
+      <h2 class="section-heading">Not a brochure. A <em>client-generating system</em>.</h2>
+
+      <div class="build-intro">
+        <p>
+          Clinic Catalyst builds complete digital ecosystems for established clinics.
+          <strong>For Amar Skin, we start from zero and build something that reflects 14 years of expertise</strong> -
+          a premium website with real images from your Instagram, a skin assessment that captures leads
+          24 hours a day, and a digital strategy that makes you visible to every person searching for
+          what you offer in Melbourne's south-eastern suburbs.
+        </p>
+      </div>
+
+      <div class="build-phases">
+        <div class="phase">
+          <div class="phase-num-wrap">01</div>
+          <div class="phase-content">
+            <p class="phase-tag">Foundation</p>
+            <h3 class="phase-title">Your cinematic brand website</h3>
+            <p class="phase-desc">A full homepage built around your real clinic images, your real reviews, and your three core client pathways - acne, texture, and ageing. Premium design that reflects the boutique experience clients describe when they walk through your door.</p>
+            <ul class="phase-items">
+              <li class="phase-item">Full homepage</li>
+              <li class="phase-item">Image carousel</li>
+              <li class="phase-item">3 offer sections</li>
+              <li class="phase-item">Owner bio</li>
+              <li class="phase-item">Testimonials</li>
+              <li class="phase-item">Mobile optimised</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="phase">
+          <div class="phase-num-wrap">02</div>
+          <div class="phase-content">
+            <p class="phase-tag">Lead Capture</p>
+            <h3 class="phase-title">The skin assessment funnel</h3>
+            <p class="phase-desc">A 5-step quiz that identifies each visitor's skin concern, captures their details, and delivers a personalised treatment recommendation - before they even speak to you. Works 24 hours a day, 7 days a week, even when you are closed.</p>
+            <ul class="phase-items">
+              <li class="phase-item">5-step quiz</li>
+              <li class="phase-item">Lead capture form</li>
+              <li class="phase-item">Personalised results</li>
+              <li class="phase-item">Automatic follow-up</li>
+              <li class="phase-item">CTA to book</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="phase">
+          <div class="phase-num-wrap">03</div>
+          <div class="phase-content">
+            <p class="phase-tag">Visibility</p>
+            <h3 class="phase-title">Local SEO and Google discovery</h3>
+            <p class="phase-desc">Your website is written and structured so Google understands exactly what you do and where you do it. Combined with a Google Business Profile optimisation, this puts Amar Skin in front of people actively searching in Armadale, Toorak, South Yarra, and Prahran.</p>
+            <ul class="phase-items">
+              <li class="phase-item">SEO-structured copy</li>
+              <li class="phase-item">Location pages</li>
+              <li class="phase-item">Google Business setup</li>
+              <li class="phase-item">Review integration</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="phase">
+          <div class="phase-num-wrap">04</div>
+          <div class="phase-content">
+            <p class="phase-tag">Ongoing</p>
+            <h3 class="phase-title">Monthly management and growth</h3>
+            <p class="phase-desc">Once you are live, Clinic Catalyst handles ongoing updates, performance monitoring, and content additions - so you focus on your clients, not your website. Your digital presence grows while you work.</p>
+            <ul class="phase-items">
+              <li class="phase-item">Monthly updates</li>
+              <li class="phase-item">Performance reports</li>
+              <li class="phase-item">Content additions</li>
+              <li class="phase-item">Technical maintenance</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <!-- DIFFERENTIATION -->
+    <div class="diff-section">
+      <p class="section-label">Why Clinic Catalyst</p>
+      <h2 class="section-heading">Built for clinics. Not a generic <em>website template</em>.</h2>
+      <div class="diff-grid">
+        <div class="diff-box bad">
+          <p class="diff-box-label">Generic web agencies</p>
+          <ul class="diff-list">
+            <li>Template sites that look like every other business</li>
+            <li>No understanding of clinic client psychology</li>
+            <li>Copy that lists treatments, not solves problems</li>
+            <li>No lead capture or conversion strategy</li>
+            <li>One build, then disappear</li>
+          </ul>
+        </div>
+        <div class="diff-box good">
+          <p class="diff-box-label">Clinic Catalyst</p>
+          <ul class="diff-list">
+            <li>Purpose-built for aesthetic and skin clinics</li>
+            <li>Problem-first copy that resonates before they book</li>
+            <li>Real your-clinic images, not stock photos</li>
+            <li>Lead capture built in from day one</li>
+            <li>Ongoing partnership, not a one-off project</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <!-- TIMELINE -->
+    <div class="timeline-section">
+      <p class="section-label">From Zero to Live</p>
+      <h2 class="section-heading">You could be <em>fully live</em> within two weeks</h2>
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-dot">
+            <div class="timeline-dot-circle"></div>
+            <span class="timeline-week">Day 1</span>
+          </div>
+          <div class="timeline-content">
+            <h4>Strategy call and content collection</h4>
+            <p>30-minute call with Amar. We confirm your three core offerings, gather any additional images, and lock in your brand direction.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot">
+            <div class="timeline-dot-circle"></div>
+            <span class="timeline-week">Days 2-5</span>
+          </div>
+          <div class="timeline-content">
+            <h4>Website design and copy</h4>
+            <p>Full homepage built with your imagery, your review quotes, and problem-focused copy designed to convert visitors into bookings.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot">
+            <div class="timeline-dot-circle"></div>
+            <span class="timeline-week">Days 6-8</span>
+          </div>
+          <div class="timeline-content">
+            <h4>Review and refinement</h4>
+            <p>You review the full site. We make your edits. One round of changes included before launch.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot">
+            <div class="timeline-dot-circle"></div>
+            <span class="timeline-week">Days 9-12</span>
+          </div>
+          <div class="timeline-content">
+            <h4>Skin assessment quiz build and testing</h4>
+            <p>5-step lead capture quiz built, tested, and connected to your booking CTA or notification system.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot">
+            <div class="timeline-dot-circle"></div>
+            <span class="timeline-week">Day 14</span>
+          </div>
+          <div class="timeline-content">
+            <h4>Go live - you are findable</h4>
+            <p>Website goes live. Google is notified. Anyone searching for skin treatments in Armadale can now find you, read about you, and book with you.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="roadmap-cta">
+      <div class="roadmap-cta-content">
+        <h2>Ready to stop being the <em>best-kept secret</em>?</h2>
+        <p>
+          14 years of results. 89 five-star reviews. A boutique experience that clients rave about.
+          Let's make sure the next person looking for skin care in Armadale can actually find you.
+        </p>
+        <a href="index.html" class="btn-cta">Let's Talk - Book a Discovery Call</a>
+        <p class="cta-note">No obligation. 20-minute call. We will walk through what is possible for Amar Skin.</p>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>Prepared by <span>Clinic Catalyst</span> - an AI with Soul product - for Amar Skin, Armadale VIC 2026</p>
+    <p>This document is confidential and prepared exclusively for Amar Skin.</p>
+  </footer>
+
+</body>
+</html>
